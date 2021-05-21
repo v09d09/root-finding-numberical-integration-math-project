@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Project</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <!-- -------------------------------------------------------------------- header -->
+      <header class="header">
+        <div class="container">
+          <div class="row">
+            <div class="section-tabs">
+              <button
+                type="button"
+                class="tab-item active"
+                data-target="#bisection"
+              >
+                bisection
+              </button>
+              <button type="button" class="tab-item" data-target="#newton">
+                newton
+              </button>
+              <button type="button" class="tab-item" data-target="#trapezoidal">
+                trapezoidal
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- ----------------------------------------------------------------- bisection -->
+      <section class="bisection-section sec-padding active" id="bisection">
+        <div class="container">
+          <!-- -------------------------------------------- form -->
+          <div class="row">
+            <div class="input-form">
+              <form>
+                <div class="row">
+                  <div class="input-group equ">
+                    <input
+                      type="text"
+                      placeholder="Equation"
+                      class="input-control"
+                      name="equ"
+                      required
+                    />
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      placeholder="from"
+                      class="input-control"
+                      name="from"
+                      required
+                    />
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      placeholder="to"
+                      class="input-control"
+                      name="to"
+                      required
+                    />
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      placeholder="eps"
+                      class="input-control"
+                      name="eps"
+                    />
+                  </div>
+                  <div class="submit-btn">
+                    <button type="submit" class="btn" id="solve-btn">
+                      solve
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- --------------------------------------- error -->
+          <div class="row hidden">
+            <div class="error">
+              <p></p>
+            </div>
+          </div>
+          <!-- ---------------------------------- answer & graph -->
+          <div class="row hidden">
+            <div class="answer">
+              <h3>The abroximate root =</h3>
+              <h2></h2>
+              <h3>After <span></span> iterations.</h3>
+            </div>
+            <div class="graph">
+              <div id="bisection-plot"></div>
+            </div>
+          </div>
+
+          <!-- -----------------------------------------table -->
+          <div class="row hidden">
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+
+                    <th>a</th>
+
+                    <th>b</th>
+
+                    <th>c</th>
+
+                    <th>f(c)</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ----------------------------------------------------------------- newton -->
+      <section class="newton-section sec-padding" id="newton">
+        <div class="container">
+          <!-- -------------------------------------------- form -->
+          <div class="row">
+            <div class="input-form">
+              <form>
+                <div class="row">
+                  <div class="input-group equ">
+                    <input
+                      type="text"
+                      placeholder="Equation"
+                      class="input-control"
+                      name="equ"
+                      required
+                    />
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      placeholder="X0"
+                      class="input-control"
+                      name="x0"
+                      required
+                    />
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      placeholder="eps"
+                      class="input-control"
+                      name="eps"
+                    />
+                  </div>
+                  <div class="submit-btn">
+                    <button type="submit" class="btn" id="solve-btn">
+                      solve
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- --------------------------------------- error -->
+          <div class="row hidden">
+            <div class="error">
+              <p></p>
+            </div>
+          </div>
+          <!-- ---------------------------------- answer & graph -->
+
+          <div class="row hidden">
+            <div class="answer">
+              <h3>The abroximate root =</h3>
+              <h2></h2>
+              <h3>After <span></span> iterations.</h3>
+            </div>
+            <div class="graph">
+              <div id="newton-plot"></div>
+            </div>
+          </div>
+          <div class="row hidden">
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+
+                    <th>x</th>
+
+                    <th>f(x)</th>
+
+                    <th>f`(x)</th>
+
+                    <th>xi</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ----------------------------------------------------------------- trapezoidal -->
+      <section class="trapezoidal-section sec-padding" id="trapezoidal">
+        <div class="container">
+          <!-- -------------------------------------------- form -->
+          <div class="row">
+            <div class="input-form">
+              <form>
+                <div class="row">
+                  <div class="input-group equ">
+                    <input
+                      type="text"
+                      placeholder="Equation"
+                      class="input-control"
+                      name="equ"
+                      required
+                    />
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      placeholder="interval"
+                      class="input-control"
+                      name="interval"
+                      required
+                    />
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      placeholder="x0"
+                      class="input-control"
+                      name="x0"
+                      required
+                    />
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      placeholder="xn"
+                      class="input-control"
+                      name="xn"
+                      required
+                    />
+                  </div>
+                  <div class="submit-btn">
+                    <button type="submit" class="btn" id="solve-btn">
+                      solve
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- --------------------------------------- error -->
+          <div class="row hidden">
+            <div class="error">
+              <p></p>
+            </div>
+          </div>
+          <!-- ---------------------------------- answer & graph -->
+
+          <div class="row hidden">
+            <div class="answer">
+              <h3>Approximation of a definite integral =</h3>
+              <h2></h2>
+              <!-- <h3>After <span></span> iterations.</h3> -->
+            </div>
+            <div class="graph">
+              <div id="trapezoidal-plot"></div>
+            </div>
+          </div>
+          <!-- <div class="row hidden">
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+
+                    <th>x</th>
+
+                    <th>f(x)</th>
+
+                    <th>f`(x)</th>
+
+                    <th>xi</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div> -->
+        </div>
+      </section>
+      <footer>
+        <div class="row">
+          <p>
+            This work by
+            <span
+              xmlns:cc="http://creativecommons.org/ns#"
+              property="cc:attributionName"
+              >Mohamed Hekal</span
+            >
+            is licensed under a
+            <a
+              rel="license"
+              href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+              >Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+              International License</a
+            >.
+          </p>
+          <a
+            rel="license"
+            href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          >
+            <img
+              alt="Creative Commons License"
+              style="border-width: 0"
+              src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+          /></a>
+        </div>
+      </footer>
+    </div>
+    <script src="./src/libs/plotly-latest.min.js"></script>
+    <script src="./src/libs/math.js"></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
