@@ -1,6 +1,7 @@
 /* ----------- variables ------------ */
 :root {
   --main-color: #e02f6b;
+  --main-color-alpha-80: #e02f6b80;
   --blue: #0000ff;
   --blue-dark: #18293c;
   --orange: #ffa500;
@@ -117,7 +118,9 @@ section.active {
   display: flex;
   flex-wrap: wrap;
 }
-
+.justify-content-center{
+ justify-content: center;
+}
 .hidden {
   display: none !important;
 }
@@ -155,7 +158,7 @@ button {
   position: relative;
   overflow: hidden;
   vertical-align: middle;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 .btn::before {
   content: "";
@@ -166,7 +169,7 @@ button {
   width: 0%;
   background-color: var(--main-color);
   z-index: -1;
-  transition: width 0.3s ease;
+  transition: width 0.2s ease;
 }
 .btn:hover::before {
   width: 100%;
@@ -274,9 +277,23 @@ header {
 .input-form .input-control:focus {
   border-color: var(--white-alpha-40);
 }
-.input-form .submit-btn {
+/* .input-form .submit-btn {
   margin: auto;
+} */
+.input-form #example-btn {
+  background-color: var(--main-color);
+  padding: 10px;
+  color: var(--white);
+  transition: none;
+  margin: 5px;
 }
+.input-form #example-btn::before {
+  transition: none;
+}
+.input-form #solve-btn{
+  margin: 5px;
+}
+
 .input-form textarea.input-control {
   height: 120px;
   resize: none;

@@ -1,8 +1,10 @@
 export default function newtonRaphson(eq, x, eps) {
   let table = [];
   let counter = 0;
+
   let eqDer = math.derivative(eq, "x").toString();
   let eqDerDer = math.derivative(eqDer, "x").toString();
+
   if (
     math.abs(
       (math.evaluate(eq, { x }) * math.evaluate(eqDerDer, { x })) /
@@ -15,11 +17,10 @@ export default function newtonRaphson(eq, x, eps) {
   }
   if (isNaN(eps) || eps == null) eps = 0.000001;
 
-  console.log(eq, eqDer, eqDerDer, x);
   let h = math.evaluate(eq, { x }) / math.evaluate(eqDer, { x });
-  console.log(h);
 
   while (Math.abs(h) >= eps) {
+    
     let iter = {};
     iter["counter"] = counter;
     iter["x"] = x;

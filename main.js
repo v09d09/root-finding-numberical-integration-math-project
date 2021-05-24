@@ -14,15 +14,16 @@ tabsContainer.addEventListener("click", (e) => {
     tabsContainer.querySelector(".active").classList.remove("active");
     e.target.classList.add("active");
     const target = e.target.getAttribute("data-target");
-    console.log(target);
+    
     sections.querySelector("section.active").classList.remove("active");
     sections.querySelector(target).classList.add("active");
   }
 });
 
-//////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////// selectors
 // bisection
 const formBisection = document.querySelector(".bisection-section form");
+const exampleBisection = document.querySelector(".bisection-section #example-btn");
 const tableBisection = document.querySelector(".bisection-section table");
 const answerBoxBisection = document.querySelector(
   ".bisection-section .answer h2"
@@ -36,6 +37,7 @@ const ansDivsBisection = document.querySelectorAll(
 const errDivBisection = document.querySelector(".bisection-section .error");
 // newton
 const formNewton = document.querySelector(".newton-section form");
+const exampleNewton = document.querySelector(".newton-section #example-btn");
 const tableNewton = document.querySelector(".newton-section table");
 const ansBoxNewton = document.querySelector(".newton-section .answer h2");
 const iterBoxNewton = document.querySelector(
@@ -45,6 +47,7 @@ const ansDivsNewton = document.querySelectorAll(".newton-section .row.hidden");
 const errDivNewton = document.querySelector(".newton-section .error");
 // trapezoidal
 const formTrap = document.querySelector(".trapezoidal-section form");
+const exampleTrap = document.querySelector(".trapezoidal-section #example-btn");
 const ansBoxTrap = document.querySelector(".trapezoidal-section .answer h2");
 const ansDivsTrap = document.querySelectorAll(
   ".trapezoidal-section .row.hidden"
@@ -79,6 +82,13 @@ formBisection.addEventListener("submit", (e) => {
   }
 });
 
+exampleBisection.addEventListener('click', e => {
+  e.stopPropagation();
+  e.preventDefault();
+  document.querySelector('.bisection-section #equ').value = '1/2x - cbrt(x+1)';
+  document.querySelector('.bisection-section #from').value = '3';
+  document.querySelector('.bisection-section #to').value = '4';
+});
 /////////// newton listener
 formNewton.addEventListener("submit", (e) => {
   e.stopPropagation();
@@ -104,6 +114,14 @@ formNewton.addEventListener("submit", (e) => {
   }
 });
 
+exampleNewton.addEventListener('click', e => {
+  e.stopPropagation();
+  e.preventDefault();
+  document.querySelector('.newton-section #equ').value = 'x-2sin(x)';
+  document.querySelector('.newton-section #x0').value = '2';
+
+});
+
 /////////// trap listener
 formTrap.addEventListener("submit", (e) => {
   e.stopPropagation();
@@ -114,7 +132,7 @@ formTrap.addEventListener("submit", (e) => {
   inputs["interval"] = formTrap.interval.value;
   inputs["x0"] = formTrap.x0.value;
   inputs["xn"] = formTrap.xn.value;
-  console.log(inputs);
+  
   try {
     const trapResult = trapezoidal(
       inputs.equ,
@@ -132,6 +150,16 @@ formTrap.addEventListener("submit", (e) => {
   }
 });
 
+exampleTrap.addEventListener('click', e => {
+  e.stopPropagation();
+  e.preventDefault();
+  document.querySelector('.trapezoidal-section #equ').value = '1 / (1 + x * x)';
+  document.querySelector('.trapezoidal-section #interval').value = '6';
+  document.querySelector('.trapezoidal-section #x0').value = '0';
+  document.querySelector('.trapezoidal-section #xn').value = '1';
+
+});
+
 // -------------------------------------------------- util functions
 function showError(err, errDiv) {
   errDiv.children[0].innerHTML = err;
@@ -139,7 +167,7 @@ function showError(err, errDiv) {
 }
 function resetError(errDiv) {
   errDiv.children[0].innerHTML = "";
-  console.log(errDiv.parentElement.classList);
+  
   errDiv.parentElement.classList.add("hidden");
 }
 
